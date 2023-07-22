@@ -1,0 +1,30 @@
+@use "../util" as *;
+body {
+  background-color: var(--clr-bg);
+  color: var(--clr-text);
+  font-family: $ff;
+}
+
+ul {
+  padding: 0;
+}
+
+li {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+body {
+  padding-bottom: 200vh;
+  font-size: 14px;
+}
+
+h1 {
+  font-size: $sub-heading;
+  font-weight: $semibold;
+}

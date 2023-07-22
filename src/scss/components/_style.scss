@@ -1,0 +1,187 @@
+@use "../util" as *;
+picture img {
+  aspect-ratio: 16/9;
+  width: 100%;
+}
+
+h1 {
+  font-size: clamp(1.13rem, calc(0.63rem + 2.5vw), 1.25rem);
+  margin-bottom: 0.2rem;
+  line-height: 1.2;
+  margin-bottom: 0.5rem;
+}
+
+main {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+}
+
+.container {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: $brd;
+
+  &::after {
+    content: "";
+    background-color: var(--clr-bg);
+    position: absolute;
+    inset: 0;
+    z-index: -4;
+  }
+
+  &::before {
+    content: "";
+    background-color: var(--clr-text);
+    position: absolute;
+    inset: 0;
+    opacity: 0.1;
+    z-index: -3;
+  }
+}
+
+aside {
+  padding: 1rem 1.5rem;
+}
+
+.aside-sec2 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2rem;
+
+  > :first-child {
+    display: flex;
+    gap: 0 0.5em;
+
+    img {
+      width: 40px;
+      width: 40px;
+      border-radius: 50%;
+    }
+  }
+}
+
+.share {
+  > :first-child {
+    position: relative;
+    background-color: var(--clr-bg);
+    width: 26px;
+    height: 26px;
+    display: grid;
+    border-radius: 50%;
+    place-items: center;
+    overflow: hidden;
+    z-index: 1;
+
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      opacity: 0.3;
+      background-color: var(--clr-text);
+    }
+  }
+
+  &-trigger {
+    @include fa-icon;
+    @include fa-icon-solid($fa-var-share);
+    @extend %reset-btn;
+    z-index: 1;
+
+    &.active {
+      @include fa-icon-solid($fa-var-close);
+    }
+  }
+
+  &-content {
+    gap: 0 1.2rem;
+    align-items: center;
+    padding: 0 1.5rem;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 4.5rem;
+    background-color: var(--clr-bg);
+    display: none;
+
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-color: var(--clr-text);
+      opacity: 0.2;
+    }
+
+    > :nth-child(2) {
+      @include brand-icon($fa-var-facebook);
+    }
+
+    > :nth-child(3) {
+      @include brand-icon($fa-var-twitter);
+    }
+    > :nth-child(4) {
+      @include brand-icon($fa-var-pinterest);
+    }
+
+    li {
+      z-index: 1;
+    }
+  }
+}
+
+.name {
+  font-weight: $semibold;
+}
+
+.date {
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+@media (min-width: 600px) {
+  .container {
+    @include flex(row, 0);
+    width: 94%;
+    max-width: 600px;
+
+    picture img {
+      height: 100%;
+      object-fit: cover;
+    }
+
+    animation: fadeIn 1s;
+  }
+
+  aside {
+    position: relative;
+    overflow: hidden;
+  }
+}
+
+.theme-toggle {
+  position: absolute;
+  top: 0.5em;
+  right: 0.5rem;
+
+  /* The slider */
+  .slider {
+    --background: var(--clr-primary);
+    background-color: var(--background);
+  }
+
+  .slider:before {
+    box-shadow: inset 8px -4px 0px 0px var(--clr-bg);
+    background: var(--background);
+  }
+
+  input:checked + .slider {
+    background-color: var(--clr-primary);
+  }
+
+  input:checked + .slider:before {
+    box-shadow: inset 15px -4px 0px 15px var(--clr-bg);
+  }
+}
