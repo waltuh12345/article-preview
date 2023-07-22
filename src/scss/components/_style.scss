@@ -6,9 +6,11 @@ picture img {
 
 h1 {
   font-size: clamp(1.13rem, calc(0.63rem + 2.5vw), 1.25rem);
+  font-size: 18px;
   margin-bottom: 0.2rem;
   line-height: 1.2;
   margin-bottom: 0.5rem;
+  font-weight: $medium;
 }
 
 main {
@@ -53,11 +55,13 @@ aside {
 
   > :first-child {
     display: flex;
+    align-items: center;
     gap: 0 0.5em;
 
     img {
-      width: 40px;
-      width: 40px;
+      width: 30px;
+      height: 30px;
+      object-fit: cover;
       border-radius: 50%;
     }
   }
@@ -145,19 +149,23 @@ aside {
   .container {
     @include flex(row, 0);
     width: 94%;
-    max-width: 600px;
+    max-width: 630px;
+    animation: fadeIn 1s;
 
     picture img {
       height: 100%;
       object-fit: cover;
     }
 
-    animation: fadeIn 1s;
+    picture {
+      width: 40%;
+    }
   }
 
   aside {
     position: relative;
     overflow: hidden;
+    flex: 1;
   }
 }
 
